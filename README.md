@@ -124,10 +124,28 @@ Eğer yakalamaya çalışılan trafik işareti bir yuvarlak ise Hough dönüşü
 
 (𝑥−𝑎)^2 + (𝑦−𝑏)^2 = r^2 (denklem-5)
 
+➔ Canny algoritması uygulanmış görüntü üzerine 3x3 Gauss Filtresi uygulanır.
 
+➔ Elde edilen görüntüye Hough Dönüşümü uygulanır ve belirlenen yarıçap değerine göre çember bulunur.
 
+➔ Denklem 5’de a ve b dairenin merkez koordinatlarıdır ve (a,b) şeklinde gösterilir. Denklemdeki r yarıçaptır.
 
+➔ Bir 2D noktası (x, y) sabitse, parametreler denklem 5'e göre bulunur. (Parametre alanı üç boyutlu olacaktır (a, b, r))
 
+➔ Bu üç parametre (a, b, r) sayesinde de görüntü üzerinde merkezi belirlenmiş bir çember çizilir.
+
+Tüm bu işlemler yaptıktan sonra karşımıza çıkabilecek bütün trafik levhaları şekillerine bağlı olarak yüksek oranla bulunabilmektedir.
+
+## 3. Algoritma Akış Şeması
+![image](https://user-images.githubusercontent.com/70964563/152917341-6710261b-11b7-4fda-b200-394ab6ade629.png)
+
+## 4. Analiz ve Yorum
+
+### 4.1. Eğitim Seti
+
+![image](https://user-images.githubusercontent.com/70964563/152917420-fc4c4b65-c288-4eb2-9975-61a3302c5ad9.png)
+
+→ Yukarıdaki Şekil 5’te kullanılan eğitim görüntüsünün sonucu Şekil 6’daki gibidir. Görüntüde yer alan üçgen, yuvarlak ve kare trafik işaret levhaları doğru bir şekilde tespit edilmiştir. Görüntüde yer alan üçgen trafik işaret levhasının iç ve dış yüzeyinde iki tane üçgen olduğu için hem iç üçgen hem de dış üçgen çizilmiştir. Kare ve yuvarlak trafik işaret levhalarının tespitinde herhangi bir sorun ile karşılaşılmamıştır. Tasarlanan algoritma başarılı bir şekilde çalışmıştır.
 
 
 
