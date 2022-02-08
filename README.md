@@ -1,7 +1,7 @@
 # OpenCV_TrafficSignDetection
 
-#### NOT: BeniOku dosyasında yer alan her açıklamaya Traffic_Sign_Detector_OpenCV/ Rapor/.. klasöründen erişebilirsiniz.
-#### NOTE: You can access each description in the README file from the Traffic_Sign_Detector_OpenCV/ Report/.. folder.
+#### NOT: BeniOku dosyasında yer alan her açıklamaya Traffic_Sign_Detector_OpenCV/ Rapor/.. klasöründen erişebilirsiniz. Görseller Traffic_Sign_Detector_OpenCV/ Kod/.. klasöründedir.
+#### NOTE: You can access each description in the README file from the Traffic_Sign_Detector_OpenCV/ Report/.. folder. Images are from Traffic_Sign_Detector_OpenCV/ Code/.. it is in the folder.
 
 ## ÖZET
 Bu projede “Python” programlama dili ile görüntü işleme dersi kapsamında görüntü üzerindeki trafik işaretlerinin/levhalarının tespit edilmesi konusu üzerinde çalışılacaktır. Seçilen 8 adet görüntüye eşikleme[1], ayrıt saptama[2], morfolojik operatörler[3], çizgi/elips/daire tespiti[4],filtreleme[5] gibi yöntemler uygulanarak incelenecektir. Son olarak öznitelik çıkartımı[6] yöntemi sayesinde trafik işaretlerinin tespiti yapılacaktır.
