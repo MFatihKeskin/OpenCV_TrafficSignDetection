@@ -31,10 +31,13 @@ A giriş görüntüsü ve B yapı elemanı iken;
 
 • Genişletme İşlemi (dilation): 
 İkili imgedeki nesneyi büyütmeye ya da kalınlaştırmaya yarayan morfolojik işlemdir. Sayısal bir resmi genişletmek resmi yapısal elemanla kesiştiği bölümler kadar büyütmek demektir. Kalınlaştırma işleminin nasıl yapılacağını yapı elemanı belirler. ( "⊕" ile gösterilir)
+
 • Aşındırma işlemi (erosion): 
 İkili imgedeki nesneyi küçültmeye ya da inceltmeye yarayan morfolojik işlemdir. Aşındırma işlemi bir bakıma genişletmenin tersi gibidir. Aşındırma işlemi ile sayısal resim aşındırılmış olur. Yani resim içerisindeki nesneler ufalır, delik varsa genişler, bağlı nesneler ayrılma eğilimi gösterir. ( "⊖" ile gösterilir)
+
 • Açma işlemi (opening): 
 Genişletme ve aşındırma işlemini ardışıl uygulanmasıyla elde edilir. Bu işlemle birbirine yakın iki nesne görüntüde fazla değişime sebebiyet vermeden ayrılmış olurlar. ( "𝑜" ile gösterilir)
+
 • Kapama işlemi (closing) : 
 Aşındırma ve genişletme işleminin ardışıl uygulanmasıyla da kapama işlemi elde edilir. Dolayısıyla birbirine yakın iki nesne görüntüde fazla değişiklik yapılmadan birbirine bağlanmış olur. ( "•" ile gösterilir)
 
@@ -54,15 +57,17 @@ Otsu Eşikleme Yöntemi:
 
 ➔ Bulunan p(i) ve q1(t) ve q2(t) kullanılarak her grubun ortalama değeri olan μ1(t) ve μ2(t) hesaplanır.
 
-➔ Bulunan değerler kullanılarak her grubun varyansı hesaplanır. σ2(t)= σ2w(t)+ σ2b(t) formülü kullanılarak σ2b(t) maksimum değeri alması sağlanır.
+➔ Bulunan değerler kullanılarak her grubun varyansı hesaplanır. σ^2(t)= σ^2_w(t)+ σ^2_b(t) formülü kullanılarak σ^2_b(t) maksimum değeri alması sağlanır.
 
-➔ Bu sayede σ2w(t) = q1(t)* σ12(t) + q2(t)* σ22(t) değerinin minimum olması sağlanır ve eşikleme değeri σ2w(t) olarak belirlenir.
+➔ Bu sayede σ^2_w(t) = q1(t)* σ1^2(t) + q2(t)* σ2^2(t) değerinin minimum olması sağlanır ve eşikleme değeri σ^2_w(t) olarak belirlenir.
 
 Bu işlemler sonucunda gri seviyeli bir görüntü ikili seviyeye indirgenirken kullanılabilecek en uygun eşik değeri tespit edilmiştir. Ayrıca grupların kendi içindeki standart sapmaları küçüktür ve gruplar birbirinden iyi derecede ayrılmış olarak elde edilmiştir.
 
 ## 2.4. Morfolojik Gradient
 Otsu Eşikleme Metodu uygulanmış görüntüye bu adımda ise Morfolojik Gradient işlemi uygulanmıştır. Morfolojik Gradient, bir görüntünün genişlemesi (dilation) ve aşınması (erosion) arasındaki farkı temsil eder (denklem-3).
+
 A giriş görüntüsü ve B yapı elemanı iken; 𝐺𝑟𝑎𝑑𝑖𝑒𝑛𝑡(𝑓) =(𝐴⊕𝐵) − (𝐴⊖𝐵) (denklem-3)
+
 Morfolojik Gradient uygulanan görüntüdeki piksel değerleri yakınındaki piksel değerlerinin kontrast yoğunluğunu gösterir. Bu işlem sonucunda görüntüdeki kenarlar daha kalın elde edilmiştir. Morfolojik Gradient sayesinde her piksel değerinin (tipik olarak negatif olmayan) o pikselin yakın çevresindeki kontrast yoğunluğunu gösterdiği bir görüntüdür. Kenar algılama ve segmentasyon uygulamaları için kullanışlıdır.
 
 ➔ Morfolojik yöntemleri uygulamak için yapı elemanı kullanılmalıdır. Bu yapı elemanı 3x3 boyutlarında ve kare şeklinde seçilmiştir.
