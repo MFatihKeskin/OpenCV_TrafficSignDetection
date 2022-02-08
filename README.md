@@ -186,20 +186,46 @@ Tüm bu işlemler yaptıktan sonra karşımıza çıkabilecek bütün trafik lev
 
 Test seti, tespit edilebilmesi sırasıyla zordan kolaya doğru giden görüntüleri içermektedir. Seçilmesi gereken 8 adet görüntüden ayrı olarak aynı algoritma üzerinde denenerek test edilmiştir.
 
+![image](https://user-images.githubusercontent.com/70964563/152918201-d05dba72-93f2-44ac-97a2-1b5654e0cb46.png)
 
+→ Yukarıdaki Şekil 21’de kullanılan test görüntüsünün sonucu Şekil 22’deki gibidir. Görüntüde yer alan kare ve yuvarlak trafik işaret levhaları tespit edilmiştir. Arkada bulunan kare işaret levhasının tespit edilememesinin sebebi algoritmada tespit edilmesi istenilen kare işaret levhalarının alanı 20 pikselden büyük seçilmiştir. Görüntüde arkada yer alan kare işaretin tespit edilmemesinin sebebi alanının 20’den küçük olmasıdır.
 
+![image](https://user-images.githubusercontent.com/70964563/152918224-090e7728-d439-495b-b376-155e74fae997.png)
 
+→ Yukarıdaki Şekil 25’te kullanılan test görüntüsünün sonucu Şekil 26’deki gibidir. Görüntüde yer alan kare trafik işaret levhaları tespit edilmiştir. Görüntünün altında yer alan yuvarlak trafik işaret levhaları tespit edilememiştir. Bunun sebebi algoritmada seçilmesi istenilen yuvarlak trafik işaretlerini maksimum yarıçap değeri 60’tır. Görüntüde yer alan trafik işaretlerinin yarı çapı 60 değerinden küçük olduğu için algoritma tespit edememiştir. Maksimum yarıçap değeri değiştirilirse yuvarlak trafik işaretlerinin tespit edildiği gözlemlenmiştir.
 
+![image](https://user-images.githubusercontent.com/70964563/152918247-b65abd12-478c-4a61-b606-756701645b25.png)
 
+→ Yukarıdaki Şekil 23’te kullanılan test görüntüsünün sonucu Şekil 24’teki gibidir. Görüntüde yer alan kare trafik işaret levhası tespit edilmiştir. Arkada bulunan kare işaret levhasının tespit edilememesinin sebebi algoritmada tespit edilmesi istenilen kare işaret levhalarının alanı 20 pikselden büyük seçilmiştir. Görüntüde arkada yer alan kare işaretin tespit edilmemesinin sebebi alanının 20’den küçük olmasıdır.
 
+![image](https://user-images.githubusercontent.com/70964563/152918280-7c4729c7-d1a4-404a-9249-6122b468ec88.png)
 
+→ Yukarıdaki Şekil 27’de kullanılan test görüntüsünün sonucu Şekil 28’deki gibidir. Görüntüde yer alan kare trafik işaret levhası tespit edilmiştir. Görüntüdeki kare işaretin altında yer alan “Konya” yazısının karesi algılanamamıştır. Bunun sebebi algoritmada alanı 20 piksel değerinden büyük olan kare işaretlerin çizilmesi seçildiği içindir. Alan değerinin değeri değiştirilirse “Konya” yazsının tespit edileceği gözlemlenmiştir.
 
+## 5. Sonuç – Yorum ve İyileştirme Önerisi
 
+• Tasarlanan trafik işaret levhalarının tespit algoritması için 8 eğitim 4 test görüntüsü kullanılmıştır. 12 adet görüntüde toplamda 33 adet trafik işaret levhaları bulunmaktadır ve bunların 23 tanesi başarılı bir şekilde tespit edilmiştir. Elde edilen başarı oranı %69 olarak hesaplanmıştır.
 
+• Tasarlanan algoritmanın gri seviye görüntüler için başarılı olduğu gözlemlenmiştir. Başarısız olunan görüntülerin sebeplerinden birisi görüntüde yer alan trafik işaret levhalarının büyüklüğünün değişiklik göstermesi, diğeri görüntülerin kalitesidir.
 
+• Trafik işaret şekilleri tespit edilirken yarıçap ve alan değeri göz önüne alınmaktadır. Yuvarlak trafik işaretleri için maksimum yarıçap değeri görüntülerde sabit olursa her yuvarlak trafik işaretinin algılanabileceği gözlemlenmiştir. Bu durumun çözümü için giriş görüntüsü okunduktan sonra giriş görüntülerinde en iyi sonucu veren piksel değerinde tekrardan boyutlandırılarak çözülmeye çalışılmıştır fakat tam sonuç elde edilememiştir.
 
+• Kontur algoritması uygulanırken bazı görüntülerde kenar bulma işlemi sırasında üçgen levhalar için 4-6 ayrıta sahip olduğu, kare levhalar için 8 ayrıta sahip olduğu gözlemlenmiştir. Bu nedenle geliştirilen kontur çizme algoritması sonucu doğru şekilde vermesi için tasarlanmıştır.
 
+• Önerilen yöntemler içerisinden uygulanan yöntemler:
 
+    ✓ Eşikleme → Otsu Eşikleme Metodu
+    
+    ✓ Ayrıt Saptama → Canny Kenar Dedektörü
+    
+    ✓ Morfolojik Operatörler → Top-Hat Dönüşümü ve Morfolojik Gradient işlemi
+    
+    ✓ Çizgi / elips / line tespiti → Kontur Bulma ve Çizme Algoritması ve Çember Hough Dönüşümü
+    
+    ✓ Filteleme → Sobel Filtresi ve Gauss Filtresi
+    
+    ✓ Öznitelik Çıkartımı → Hough Dönüşümü
+    
+• En nihai olarak kaliteli ve uygun uzaklıktan çekilen görüntülerde algoritma başarılı bir şekilde çalışmaktadır. Yukarıda belirtilen durumlar göz önünde bulundurulursa başarı oranında artış gözlemlenebilir.
 
-
-
+• Başarı oranını artırmak için; bağlantılı bileşen analizi sayesinde eksantrik değerlerine göre şekiller ayırt edilip direkt olarak objeye odaklanarak (yalnızca odaklanılan objenin kalması ve diğer görüntünün silinmesi ile) sonuca gidilebilirdi. (Sadece tahminden ibarettir, denenmemiştir)
