@@ -91,6 +91,7 @@ Kenar algılama operatörlerini kullanarak görüntünün gradyanını hesaplaya
 • Maksimum Olmayanı Bastırma: 
 Yukarıdaki adımlardan sonra görüntünün ince kenarlı olmalıdır. Kenarları inceltmek için maksimum olmayanı bastırma işlemi uygulanmalıdır.
 Algoritma, gradyan yoğunluk matrisi üzerindeki tüm noktalardan geçer ve kenar yönlerindeki maksimum değere sahip pikselleri bulur. Detay olarak gradyan yoğunluk görüntüsü üzerindeki tüm pikselleri tarayan matris başlatılır. Gradyan’dan yararlanılarak açı değerine göre kenar yönü belirlenir. Açı yönünde bulunan piksellerin, seçilen pikselden daha yüksek yoğunluğa sahip olup olmadığı kıyaslanır ve maksimum olmayan pikseller bastırılır. Şekil 4’teki görüntüdeki gibi kıyaslama yapılır.
+
 ![image](https://user-images.githubusercontent.com/70964563/152916972-88312f73-4581-40fb-a45d-0166ac618e48.png)
 
 • Çift Eşik: 
@@ -99,9 +100,29 @@ Algoritma, gradyan yoğunluk matrisi üzerindeki tüm noktalardan geçer ve kena
 • Histerezis Mekanizması: 
 Eşikleme sonucunda oluşan görüntüdeki piksel değerleri sıra ile taranır. Her piksel değeri için 8 komşuluk kontrol edilir ve komşularından birisi güçlü piksel ise zayıf pikseller kenar olarak kabul edilir.
 
+Tüm bu işlemler sonucunda görüntüdeki kenarlar tespit edilmiş olur. Bu yöntemin en kullanışlı kenar tespit algoritması olmasının sebebi birden fazla adım uygulanarak sonucun elde edilmeye çalışılmasıdır. Fakat tüm buna kolaylık olarak tek bir fonksiyon sayesinde Canny algoritması görüntüye uygulanabilir.
+
+## 2.6. Trafik İşaret Levhasının Tespiti
+Trafik işaret levhalarının tespiti için konturlar kullanılmıştır. Konturlar, aynı renk veya yoğunluğa sahip tüm sürekli noktaları (sınır boyunca) birleştiren bir eğri olarak basitçe açıklanabilir. Konturlar, şekil analizi ve nesne algılama ve tanıma için kullanışlı bir araçtır.
+
+Kontur Bulma:
+
+➔ Kontur bulunurken ilk olarak bütün konturlar bulunur. Algoritma, kontur boyunca yatay, dikey ve köşegen kesimleri sıkıştırır ve yalnızca uç noktalarını bırakır.
+
+➔ İkinci adımda ise alan sıralaması ile en iyi 6 adet kontur bulunur. (Buradaki 6 trafik işareti olabilecek şekil sayısını temsilen konulmuştur).
+
+➔ Bütün konturler için bir döngü dönerken kontur çevresi hesaplanır ve konturun kapalı bir çevre oluşturduğu belirtilir.
+
+➔ Bulunan konturler eğri ise farklı, kapalı bir şekil ise farklı bir yaklaşım değeri verilir.
+
+➔ Bu konturun boyutu sayesinde görüntüde bulunan kenar sayıları birbirine eşittir. (bkz: Tablo -1)
+
+![image](https://user-images.githubusercontent.com/70964563/152917146-4e1891a1-bf9f-4e33-ab27-5b0f134226d5.png)
 
 
+Eğer yakalamaya çalışılan trafik işareti bir yuvarlak ise Hough dönüşümünden yararlanılabilinir. Çember Hough Dönüşümü (CHT), kusurlu görüntülerdeki daireleri tespit etmek için dijital görüntü işlemede kullanılan temel bir öznitelik çıkarma tekniğidir. Çember adayları, Hough parametre alanında oylama yapılarak ve ardından bir akümülatör matrisinde yerel maksimumlar seçilerek üretilir.
 
+(𝑥−𝑎)^2 + (𝑦−𝑏)^2 = r^2 (denklem-5)
 
 
 
