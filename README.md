@@ -23,8 +23,10 @@ Gri seviyeye indirgenen görüntüler üzerinde ön ve arka planın ayırt edile
 
 Top-Hat Dönüşümü arka plandan farklı aydınlık seviyeli nesneleri araştıran gri seviyeli resimlerin segmentasyonunda kullanılan bir dönüşümdür. Gri seviyeli morfolojik işlemler kullanılarak elde edilir. Tepe veya çukur bölgeleri belirginleştirme özelliğine sahiptir.
 A giriş görüntüsü ve B yapı elemanı iken;
+
 • Aydınlık bölgeler için,
 𝑇𝑜𝑝𝐻𝑎𝑡[𝐴,𝐵] = 𝐴 − (𝐴𝑜𝐵) (denklem-1)
+
 • Karanlık bölgeler için,
 𝑇𝑜𝑝𝐻𝑎𝑡[𝐴,𝐵] = (𝐴•𝐵)−𝐴 (denklem-2)
 şeklinde hesaplanmaktadır.
@@ -151,6 +153,48 @@ Tüm bu işlemler yaptıktan sonra karşımıza çıkabilecek bütün trafik lev
 ![image](https://user-images.githubusercontent.com/70964563/152917420-fc4c4b65-c288-4eb2-9975-61a3302c5ad9.png)
 
 → Yukarıdaki Şekil 5’te kullanılan eğitim görüntüsünün sonucu Şekil 6’daki gibidir. Görüntüde yer alan üçgen, yuvarlak ve kare trafik işaret levhaları doğru bir şekilde tespit edilmiştir. Görüntüde yer alan üçgen trafik işaret levhasının iç ve dış yüzeyinde iki tane üçgen olduğu için hem iç üçgen hem de dış üçgen çizilmiştir. Kare ve yuvarlak trafik işaret levhalarının tespitinde herhangi bir sorun ile karşılaşılmamıştır. Tasarlanan algoritma başarılı bir şekilde çalışmıştır.
+
+![image](https://user-images.githubusercontent.com/70964563/152917925-4ffd6376-52ff-4366-8ead-bdcce07a7f15.png)
+
+→ Yukarıdaki Şekil 7’te kullanılan eğitim görüntüsünün sonucu Şekil 8’deki gibidir. Görüntüde yer alan üçgen ve yuvarlak trafik işaret levhaları doğru bir şekilde tespit edilmiştir. Üçgen ve yuvarlak trafik işaret levhalarının tespitinde herhangi bir sorun ile karşılaşılmamıştır. Tasarlanan algoritma başarılı bir şekilde çalışmıştır.
+
+![image](https://user-images.githubusercontent.com/70964563/152917952-a9cf20d3-0f93-407f-bdbe-26ce6624357c.png)
+
+→ Yukarıdaki Şekil 9’da kullanılan eğitim görüntüsünün sonucu Şekil 10’daki gibidir. Görüntüde yer alan üçgen trafik işaret levhasının iç ve dış yüzeyinde iki tane üçgen olduğu için hem iç üçgen hem de dış üçgen tespit edilmiştir. Arkada yer alan trafik işareti görüntü kalitesinden dolayı tespit edilememiştir.
+
+![image](https://user-images.githubusercontent.com/70964563/152917992-7e2b360b-53f4-47fb-be50-b04b8598feee.png)
+
+→ Yukarıdaki Şekil 11’de kullanılan eğitim görüntüsünün sonucu Şekil 12’deki gibidir. Görüntüde yer alan yol trafik işaret levhasının tespiti doğru bir şekilde yapılmıştır. Görüntüde yer alan yuvarlak trafik işaret levhasının tespit edilememesi algoritmada yuvarlak trafik işaretleri için seçilen maksimum yarıçaptan kaynaklıdır. Tabelaların yakınlaştırılmış görüntülerine tasarlanan algoritma uygulandığında başarılı bir şekilde yuvarlak ve üçgen trafik işaretleri tespit edilmiştir.
+
+![image](https://user-images.githubusercontent.com/70964563/152918022-9fcb23b0-344e-45fd-9dc7-ee5f1d86b756.png)
+
+→ Yukarıdaki Şekil 13’te kullanılan eğitim görüntüsünün sonucu Şekil 14’teki gibidir. Görüntüde yer alan yol trafik işaret levhasının tespiti doğru bir şekilde yapılmıştır. Görüntünün sağında yer alan tabela iki parçadan oluşuyor bu yüzden algoritma iki farklı kare tespit etmiştir. Tasarlanan algoritma başarılı bir şekilde çalışmıştır.
+
+![image](https://user-images.githubusercontent.com/70964563/152918053-dc84d4b4-8713-4aea-84e0-a144afd64b10.png)
+
+→ Yukarıdaki Şekil 15’te kullanılan eğitim görüntüsünün sonucu Şekil 16’daki gibidir. Görüntüde yer alan üçgen ve yuvarlak trafik işaret levhaları doğru bir şekilde tespit edilmiştir. Tasarlanan algoritma başarılı bir şekilde çalışmıştır.
+
+![image](https://user-images.githubusercontent.com/70964563/152918084-e31b0145-163a-4ac8-87f2-0a4c7b3dc555.png)
+
+→ Yukarıdaki Şekil 17’de kullanılan eğitim görüntüsünün sonucu Şekil 18’teki gibidir. Görüntüde yer alan üçgen ve yuvarlak trafik işaret levhaları doğru bir şekilde tespit edilmiştir. Tasarlanan algoritma başarılı bir şekilde çalışmıştır.
+
+![image](https://user-images.githubusercontent.com/70964563/152918114-2e402d65-abe8-4836-a5d5-50bab5a109f2.png)
+
+→ Yukarıdaki Şekil 19’da kullanılan eğitim görüntüsünün sonucu Şekil 20’deki gibidir. Görüntüde yer alan sekizgen, yuvarlak ve kare trafik işaret levhaları doğru bir şekilde tespit edilmiştir. Görüntüde yer alan kare trafik işaret levhasının iç ve dış yüzeyinde iki tane kare olduğu için hem iç hem de dış kare çizilmiştir. Aynı durum sekizgen trafik işaret levhası içinde geçerlidir. Tasarlanan algoritma başarılı bir şekilde çalışmıştır.
+
+### 4.2. Test Seti
+
+Test seti, tespit edilebilmesi sırasıyla zordan kolaya doğru giden görüntüleri içermektedir. Seçilmesi gereken 8 adet görüntüden ayrı olarak aynı algoritma üzerinde denenerek test edilmiştir.
+
+
+
+
+
+
+
+
+
+
 
 
 
