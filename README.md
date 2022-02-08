@@ -29,13 +29,13 @@ A giriş görüntüsü ve B yapı elemanı iken;
 𝑇𝑜𝑝𝐻𝑎𝑡[𝐴,𝐵] = (𝐴•𝐵)−𝐴 (denklem-2)
 şeklinde hesaplanmaktadır.
 
-### Genişletme İşlemi (dilation): 
+• Genişletme İşlemi (dilation): 
 İkili imgedeki nesneyi büyütmeye ya da kalınlaştırmaya yarayan morfolojik işlemdir. Sayısal bir resmi genişletmek resmi yapısal elemanla kesiştiği bölümler kadar büyütmek demektir. Kalınlaştırma işleminin nasıl yapılacağını yapı elemanı belirler. ( "⊕" ile gösterilir)
-### Aşındırma işlemi (erosion): 
+• Aşındırma işlemi (erosion): 
 İkili imgedeki nesneyi küçültmeye ya da inceltmeye yarayan morfolojik işlemdir. Aşındırma işlemi bir bakıma genişletmenin tersi gibidir. Aşındırma işlemi ile sayısal resim aşındırılmış olur. Yani resim içerisindeki nesneler ufalır, delik varsa genişler, bağlı nesneler ayrılma eğilimi gösterir. ( "⊖" ile gösterilir)
-### Açma işlemi (opening): 
+• Açma işlemi (opening): 
 Genişletme ve aşındırma işlemini ardışıl uygulanmasıyla elde edilir. Bu işlemle birbirine yakın iki nesne görüntüde fazla değişime sebebiyet vermeden ayrılmış olurlar. ( "𝑜" ile gösterilir)
-### Kapama işlemi (closing) : 
+• Kapama işlemi (closing) : 
 Aşındırma ve genişletme işleminin ardışıl uygulanmasıyla da kapama işlemi elde edilir. Dolayısıyla birbirine yakın iki nesne görüntüde fazla değişiklik yapılmadan birbirine bağlanmış olur. ( "•" ile gösterilir)
 
 Top-Hat Dönüşümü Şekil 2’deki gibi, açma işlemi ile orijinal resmin farkı alınarak bulunmaktadır.
@@ -47,6 +47,7 @@ Otsu metodu görüntüyü ön ve arka plan olarak iki gruba ayırmaktadır. Bu s
 Bu durumda oluşan siyah ve beyaz renkler ile görüntü üzerindeki ilgi alanları daha da belirginleştirilmiş olmaktadır.
 
 Otsu Eşikleme Yöntemi:
+
 ➔ Giriş görüntüsü okunur ve görüntünün histogramı oluşturulur. p(i) normalize histogramdır.
 
 ➔ Bulunan histogram grafiğinden veya dağılımından bakılarak grupların ağırlıkları olan q1(t) ve q2(t) hesaplanır.
@@ -78,16 +79,25 @@ Morfolojik Gradient uygulanan görüntüdeki piksel değerleri yakınındaki pik
 ## 2.5. Canny Kenar Dedektörü
 Morfolojik Gradient uygulanmış görüntüye bu adımda ise Canny Metodu uygulanmıştır. Canny Metodu, görüntü üzerindeki kenar tespiti ile o görüntüdeki nesneler tespit edilebilir, sayısı çıkartılabilir ve özellikleri belirlenebilir. Ayrıca Canny Metodu görüntüdeki kenarları algılamak için kullanılan en popüler yöntemdir. Kenarları algılamak için birden fazla işlem uygulanır ve Canny çıkış görüntüsü elde edilir. 
 Bu işlemler:
+
 • Gürültü Azaltma: 
 Kenar algılama sonuçları görüntü gürültüsüne karşı oldukça hassastır. Görüntüdeki gürültüden kurtulmanın yollarından birisi onu yumuşatmaktır. Gürültüyü azaltmak için orijinal görüntüye 5x5 Gaussian filtresi uygulandı. Gaussian filtresinin matematiksel formülü 4. denklemde belirtilmiştir.
 ![image](https://user-images.githubusercontent.com/70964563/152916443-7437f3f8-db01-4001-bece-f27eef1c9289.png)
+
 • Gradyan Hesaplaması: 
 Kenar algılama operatörlerini kullanarak görüntünün gradyanını hesaplayarak kenar yoğunluğunu ve yönünü tespit eder. Kenarlar, piksel yoğunluğunun değişmesine karşılık gelir. Bunu hesaplamanın en etkili yolu görüntüye “Sobel” filtresi uygulamaktır. Yoğunluk değişimini her iki yönde tespit etmek için x yönünde ve y yönünde farklı filtreler uygulanır. Bu filtreler Şekil 3’teki gibidir. Daha sonra elde edilen Gx ve Gy görüntülerinin mutlak değerleri toplanarak Gradyan hesaplanır.
 ![image](https://user-images.githubusercontent.com/70964563/152916477-85f3643a-dcb1-40da-8b23-f461379a02c9.png)
+
 • Maksimum Olmayanı Bastırma: 
 Yukarıdaki adımlardan sonra görüntünün ince kenarlı olmalıdır. Kenarları inceltmek için maksimum olmayanı bastırma işlemi uygulanmalıdır.
 Algoritma, gradyan yoğunluk matrisi üzerindeki tüm noktalardan geçer ve kenar yönlerindeki maksimum değere sahip pikselleri bulur. Detay olarak gradyan yoğunluk görüntüsü üzerindeki tüm pikselleri tarayan matris başlatılır. Gradyan’dan yararlanılarak açı değerine göre kenar yönü belirlenir. Açı yönünde bulunan piksellerin, seçilen pikselden daha yüksek yoğunluğa sahip olup olmadığı kıyaslanır ve maksimum olmayan pikseller bastırılır. Şekil 4’teki görüntüdeki gibi kıyaslama yapılır.
+![image](https://user-images.githubusercontent.com/70964563/152916972-88312f73-4581-40fb-a45d-0166ac618e48.png)
 
+• Çift Eşik: 
+Çift eşik 3 tür piksel bulmayı amaçlar. Güçlü, zayıf ve alakasız olarak sınıflandırılabilir. Güçlü pikseller için yüksek eşik değeri kullanılır ve kenara katkıda bulunduğu kabul edilir. Alakasız pikseller için düşük eşik değeri kullanılır ve kenar için alakasız olarak kabul edilir.
+
+• Histerezis Mekanizması: 
+Eşikleme sonucunda oluşan görüntüdeki piksel değerleri sıra ile taranır. Her piksel değeri için 8 komşuluk kontrol edilir ve komşularından birisi güçlü piksel ise zayıf pikseller kenar olarak kabul edilir.
 
 
 
